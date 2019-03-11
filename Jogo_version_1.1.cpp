@@ -10,9 +10,9 @@ using namespace std;
 //função principal do jogo.
 int main ( int argc, char *argv[] )
 {
-	SDL_Init( SDL_INIT_EVERYTHING);//inicia biblioteca SDL.
+	SDL_Init( SDL_INIT_EVERYTHING); //inicia biblioteca SDL.
 	
-	SDL_Window *window = NULL;//cria janela do jogo
+	SDL_Window *window = NULL; //cria janela do jogo
 
 	SDL_Surface *surface = NULL; //fundo de tela da janela
 	
@@ -20,7 +20,11 @@ int main ( int argc, char *argv[] )
 
 	bool close = false;
 	
-	int window_width = 800, window_height = 600;
+	int window_width = 800, window_height = 600; //largura e altura
+
+	int R = 0, G = 0, B = 0; //cores
+
+	int windowCounter = 0; //contador
 
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 	{
@@ -55,16 +59,28 @@ int main ( int argc, char *argv[] )
 			{
 				close = true;
 			}
-			
-			else
+
+			if( event.type == SDL_KEYDOWN)
 			{
-	
-				SDL_UpdateWindowSurface(window);//atualiza a tela
+				switch(event.key.keysym.sym)
+				{
+					case SDLK_SPACE:
+						R = rand()%255 + 0;
+						G = rand()%255 + 0;
+						B = rand()%255 + 0;
+						break;
+					default:
+						break;
+				}
+			
 			}
 		}
+		
+		SDL_FillRect( surface, NULL, SDL_MapRGB( surface -> format, R, G, B));
+		SDL_UpdateWindowSurface( window );//atualiza a tela
 	}
 	
-	SDL_DestroyWindow( window); //limpar da memória
-	SDL_Quit();//fecha a janela
+	SDL_DestroyWindow( window ); //limpar da memória
+	SDL_Quit( );//fecha a janela
 	return 0;
 }
