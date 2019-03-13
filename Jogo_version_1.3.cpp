@@ -23,10 +23,9 @@ void back()
         } else {
                 window = SDL_CreateWindow(WINDOW_NAME, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL);
                 if(window == NULL){
-                        std::cout << SDL_GetError() << std::endl;
+                        cout << SDL_GetError() << endl;
                 } else {
                         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-                        
 			if(renderer == NULL){
                                 std::cout << SDL_GetError() << std::endl;
                         } else {
@@ -55,7 +54,8 @@ void back()
         }
 
 }
-void blit()
+//função que move o fundo da tela
+void movBackground()
 {
 	for(int i  = 0; i<3; i++)
 	{
@@ -68,14 +68,27 @@ void blit()
 			background[2].rect.x = 2000;
 		}
 	}
-        SDL_RenderClear(renderer);
-        SDL_RenderCopy(renderer, background[0].texture, NULL, &background[0].rect);
-        SDL_RenderCopy(renderer, background[1].texture, NULL, &background[1].rect);
-        SDL_RenderCopy(renderer, background[2].texture, NULL, &background[2].rect);
-	SDL_RenderCopy(renderer, background[2].texture, NULL, &background[2].rect);
-        SDL_RenderPresent(renderer);
+ 
+}
+//gera as imagens
+blit(void)
+{
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, background[0].texture, NULL, &background[0].rect);
+    SDL_RenderCopy(renderer, background[1].texture, NULL, &background[1].rect);
+    SDL_RenderCopy(renderer, background[2].texture, NULL, &background[2].rect);
+	
+    SDL_RenderPresent(renderer);
 
 }
+void tique()
+{
+        movBackground();
+        blit();
+        
+}
+
+
 int main(int argc, char *argv[])
 {
 
@@ -83,13 +96,18 @@ int main(int argc, char *argv[])
  	
         mainTimer = SDL_GetTicks();
         bool close = false;
-        while(!close){
-                while(SDL_PollEvent(&Event) != 0){
-                        if(Event.type == SDL_QUIT){
+        while(!close)
+        {
+                while(SDL_PollEvent(&Event) != 0)
+                {
+                        if(Event.type == SDL_QUIT)
+                        {
                                 close = true;
                         }
-                        if(Event.type == SDL_KEYDOWN){
-                                switch(Event.key.keysym.sym){
+                        if(Event.type == SDL_KEYDOWN)
+                        {
+                                switch(Event.key.keysym.sym)
+                                {
                                 case SDLK_w:
                                         cima = true;
                                         break;
@@ -106,8 +124,10 @@ int main(int argc, char *argv[])
                                         break;
                                 }
                         }
-                        if(Event.type == SDL_KEYUP){
-                                switch(Event.key.keysym.sym){
+                        if(Event.type == SDL_KEYUP)
+                        {
+                                switch(Event.key.keysym.sym)
+                                {
                                 case SDLK_w:
                                         cima = false;
                                         break;
@@ -143,7 +163,7 @@ int main(int argc, char *argv[])
                 }*/
 		if(mainTimer +5 < SDL_GetTicks())
 		{
-			blit();			
+			tique();//gera a parte grafica			
 			mainTimer = SDL_GetTicks();
 			
 
