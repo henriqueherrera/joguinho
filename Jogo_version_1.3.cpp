@@ -9,7 +9,7 @@
 using namespace std;
 
 SDL_Window *window;
-SDL_Renderer *renderer, *renderer1;
+SDL_Renderer *renderer;
 SDL_Event Event;
  
 TTF_Font *font;
@@ -18,16 +18,18 @@ int style;
 int SCREEN_WIDTH = 1000;
 int SCREEN_HEIGHT = 750;
 int mainTimer;
-
+int count = 0;
 bool cima = false, baixo = false, esquerda = false, direita = false, create_run = false;
 
 char WINDOW_NAME[32] = "JOGO";
 
+
 sprite background[3],
-       run[1]
+       walk
        //walk[],
        //dead[],
 ;
+
 
 /*void txt_screen()
 {
@@ -73,15 +75,14 @@ void back()
                                 }
 			       	else 
 				{
-					run[0].texture = IMG_LoadTexture(renderer, "./run.png");
-                                       	SDL_QueryTexture(run[0].texture, NULL, NULL, &run[0].w, &run[0].h);
-                                        run[0].y = 300;
-					run[0].x = 300; 
-					run[0].rect.w = 50;
-					run[0].rect.h = 50;
-					run[0].rect.x = run[0].x;
-					run[0].rect.y = run[0].y;
-                               
+					walk.loadWalk(renderer);
+                                        walk.y = 300;
+					walk.x = 300; 
+					walk.rect.w = 150;
+					walk.rect.h = 150;
+					walk.rect.x = walk.x;
+					walk.rect.y = walk.y;
+					walk.vel = 10;                               
 					for(int i = 0; i < 3; i++)
 					{
                                         	if  ( (i == 0) || ( i == 2) )
@@ -96,7 +97,7 @@ void back()
                                        	 		SDL_QueryTexture(background[i].texture, NULL, NULL, &background[i].w, &background[i].h);
                                         		background[i].x = 1280*i;
 						}
-							
+						//background[i].loadWalk(renderer);	
 						background[i].y = 0;
                                         	background[i].rect.w = background[i].w;
                                         	background[i].rect.h = background[i].h;
@@ -128,15 +129,22 @@ void movBackground()
  
 }
 //gera as imagens
+
 void blit(void)
 {
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, background[0].texture, NULL, &background[0].rect);
     SDL_RenderCopy(renderer, background[1].texture, NULL, &background[1].rect);
+   // SDL_RenderCopy(renderer, background[1].walk, NULL, &background[1].rect);
+	
     SDL_RenderCopy(renderer, background[2].texture, NULL, &background[2].rect);
-    SDL_RenderCopy(renderer, run[0].texture, NULL, &run[0].rect);
+    SDL_RenderCopy(renderer, walk.walk[count], NULL, &walk.rect);
     SDL_RenderPresent(renderer);
 
+    if ( count == 14)
+    {
+    	count = -1;
+    }
 }
 void controle()
 {
@@ -162,8 +170,9 @@ int main(int argc, char *argv[])
         back();       
  	
         int mainTimer = SDL_GetTicks();
-        bool close = false;
-        
+        int sprite_tick = SDL_GetTicks();
+	bool close = false;
+       	 
 	while(!close)
         {
                 while(SDL_PollEvent(&Event) != 0)
@@ -212,30 +221,31 @@ int main(int argc, char *argv[])
                                         break;
                                 }
                         }
-               /*if(mainTimer + 10 < SDL_GetTicks()){
+               if(mainTimer + 10 < SDL_GetTicks()){
                         if(cima){
-                                player.rect.y -= player.velocity;
+                                walk.rect.y -= walk.vel;
                         }
                         if(baixo){
-                                player.rect.y += player.velocity;
+                                walk.rect.y += walk.vel;
                         }
                         if(esquerda){
-                                player.rect.x -= player.velocity;
+                                walk.rect.x -= walk.vel;
                         }
                         if(direita){
-                                player.rect.x += player.velocity;
+                                walk.rect.x += walk.vel;
                         }
+			
                         mainTimer = SDL_GetTicks();
-                }*/
+                }
                 }
 	
-	if(mainTimer +5 < SDL_GetTicks())
+	if(mainTimer +10 < SDL_GetTicks())
 	{
 		tique();//gera a parte grafica			
 		mainTimer = SDL_GetTicks();
+		count++;
 	}
 	}
-
         SDL_DestroyWindow(window);
         SDL_Quit();
  
