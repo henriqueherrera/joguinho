@@ -5,7 +5,8 @@
 #include <vector>
 #include <string.h>
 #include <SDL2/SDL_ttf.h>
-
+#include <thread>
+#include <chrono>
 using namespace std;
 
 SDL_Window *window;
@@ -18,11 +19,13 @@ int style;
 int SCREEN_WIDTH = 1000;
 int SCREEN_HEIGHT = 750;
 int mainTimer;
-int count = 0;
+int count = 0,count_mov_personagem = -1, count_mov_cenario = -1 ;
+
+
 bool cima = false, baixo = false, esquerda = false, direita = false, create_run = false;
+bool close = false;
 
 char WINDOW_NAME[32] = "JOGO";
-
 
 sprite background[3],
        walk
@@ -30,23 +33,22 @@ sprite background[3],
        //dead[],
 ;
 
-
-/*void txt_screen()
+void delay(void)
 {
-	if(TTF_Init() == -1)//if
-	{
-		cout<<"TTF_Init" << TTF_GetError()<<endl;
-	}
-	else
-	{
-		style = TTF_GetFontStyle(font);
-	       	cout <<"The fonte style is:"<<endl;
-		if( style == TTF_STYLE_NORMAL)
-		{
-			cout<< "normal" << endl;
-		}	
-	}
-}*/
+        while(!close)
+        {
+                std::this_thread::sleep_for(chrono::milliseconds(25));
+                
+
+		count_mov_personagem++;
+
+               	if(count_mov_personagem == 15 )
+               	{
+                     	count_mov_personagem = 0;
+              	}
+        }
+}
+
 void back()
 {
 	if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
@@ -134,17 +136,11 @@ void blit(void)
 {
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, background[0].texture, NULL, &background[0].rect);
-    SDL_RenderCopy(renderer, background[1].texture, NULL, &background[1].rect);
-   // SDL_RenderCopy(renderer, background[1].walk, NULL, &background[1].rect);
-	
+    SDL_RenderCopy(renderer, background[1].texture, NULL, &background[1].rect);    
     SDL_RenderCopy(renderer, background[2].texture, NULL, &background[2].rect);
-    SDL_RenderCopy(renderer, walk.walk[count], NULL, &walk.rect);
+    SDL_RenderCopy(renderer, walk.walk[count_mov_personagem], NULL, &walk.rect);
     SDL_RenderPresent(renderer);
 
-    if ( count == 14)
-    {
-    	count = -1;
-    }
 }
 void controle()
 {
@@ -158,21 +154,15 @@ void tique()
 	blit();
 	
 	movBackground();
-        
-
-
-        
 }
 
 int main(int argc, char *argv[])
 {
 
+	thread delay_1(delay);
         back();       
- 	
-        int mainTimer = SDL_GetTicks();
-        int sprite_tick = SDL_GetTicks();
-	bool close = false;
-       	 
+        
+	int mainTimer = SDL_GetTicks(); 
 	while(!close)
         {
                 while(SDL_PollEvent(&Event) != 0)
@@ -236,18 +226,16 @@ int main(int argc, char *argv[])
                         }
 			
                         mainTimer = SDL_GetTicks();
-                }
-                }
+             
+		       		
+	       }
+               }
 	
-	if(mainTimer +10 < SDL_GetTicks())
-	{
-		tique();//gera a parte grafica			
-		mainTimer = SDL_GetTicks();
-		count++;
+
 	}
-	}
+	delay_1.join();
         SDL_DestroyWindow(window);
         SDL_Quit();
- 
+	
         return 0;
 }
