@@ -12,7 +12,7 @@ class sprite
 		sprite(void);
 		~sprite(void);
 			
-		SDL_Texture *texture, *walk[15];
+		SDL_Texture *texture, *walk[15], *dead[15], *run[15], *idle[15], *jump[15];
 		SDL_Rect rect;
 		void loadWalk( SDL_Renderer *renderer);	
 		int x;

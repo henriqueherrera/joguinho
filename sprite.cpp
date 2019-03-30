@@ -56,7 +56,194 @@ void sprite::loadWalk( SDL_Renderer *renderer)
 	this->walk[14] = IMG_LoadTexture(renderer, "./boneco/Walk (15).png");
 	SDL_QueryTexture( this->walk[14], NULL, NULL, &(this->w), &(this->h));
 
+	//run
+	
+	this->run[0] = IMG_LoadTexture(renderer, "./boneco/Run (1).png");
+	SDL_QueryTexture( this->walk[0], NULL, NULL, &(this->w),&(this->h));
 
+	this->run[1] = IMG_LoadTexture(renderer, "./boneco/Run (2).png");
+	SDL_QueryTexture( this->walk[1], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[2] = IMG_LoadTexture(renderer, "./boneco/Run (3).png");
+	SDL_QueryTexture( this->walk[2], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[3] = IMG_LoadTexture(renderer, "./boneco/Run (4).png");
+	SDL_QueryTexture( this->walk[3], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[4] = IMG_LoadTexture(renderer, "./boneco/Run (5).png");
+	SDL_QueryTexture( this->walk[4], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[5] = IMG_LoadTexture(renderer, "./boneco/Run (6).png");
+	SDL_QueryTexture( this->walk[5], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[6] = IMG_LoadTexture(renderer, "./boneco/Run (7).png");
+	SDL_QueryTexture( this->walk[6], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[7] = IMG_LoadTexture(renderer, "./boneco/Run (8).png");
+	SDL_QueryTexture( this->walk[7], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[8] = IMG_LoadTexture(renderer, "./boneco/Run (9).png");
+	SDL_QueryTexture( this->walk[8], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[9] = IMG_LoadTexture(renderer, "./boneco/Run (10).png");
+	SDL_QueryTexture( this->walk[9], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[10] = IMG_LoadTexture(renderer, "./boneco/Run (11).png");
+	SDL_QueryTexture( this->walk[10], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[11] = IMG_LoadTexture(renderer, "./boneco/Run (12).png");
+	SDL_QueryTexture( this->walk[11], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[12] = IMG_LoadTexture(renderer, "./boneco/Run (13).png");
+	SDL_QueryTexture( this->walk[12], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[13] = IMG_LoadTexture(renderer, "./boneco/Run (14).png");
+	SDL_QueryTexture( this->walk[13], NULL, NULL, &(this->w), &(this->h));
+
+	this->run[14] = IMG_LoadTexture(renderer, "./boneco/Run (15).png");
+	SDL_QueryTexture( this->walk[14], NULL, NULL, &(this->w), &(this->h));
+	
+	//dead
+
+	this->dead[0] = IMG_LoadTexture(renderer, "./boneco/Dead (1).png");
+	SDL_QueryTexture( this->walk[0], NULL, NULL, &(this->w),&(this->h));
+
+	this->dead[1] = IMG_LoadTexture(renderer, "./boneco/Dead (2).png");
+	SDL_QueryTexture( this->walk[1], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[2] = IMG_LoadTexture(renderer, "./boneco/Dead (3).png");
+	SDL_QueryTexture( this->walk[2], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[3] = IMG_LoadTexture(renderer, "./boneco/Dead (4).png");
+	SDL_QueryTexture( this->walk[3], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[4] = IMG_LoadTexture(renderer, "./boneco/Dead (5).png");
+	SDL_QueryTexture( this->walk[4], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[5] = IMG_LoadTexture(renderer, "./boneco/Dead (6).png");
+	SDL_QueryTexture( this->walk[5], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[6] = IMG_LoadTexture(renderer, "./boneco/Dead (7).png");
+	SDL_QueryTexture( this->walk[6], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[7] = IMG_LoadTexture(renderer, "./boneco/Dead (8).png");
+	SDL_QueryTexture( this->walk[7], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[8] = IMG_LoadTexture(renderer, "./boneco/Dead (9).png");
+	SDL_QueryTexture( this->walk[8], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[9] = IMG_LoadTexture(renderer, "./boneco/Dead (10).png");
+	SDL_QueryTexture( this->walk[9], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[10] = IMG_LoadTexture(renderer, "./boneco/Dead (11).png");
+	SDL_QueryTexture( this->walk[10], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[11] = IMG_LoadTexture(renderer, "./boneco/Dead (12).png");
+	SDL_QueryTexture( this->walk[11], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[12] = IMG_LoadTexture(renderer, "./boneco/Dead (13).png");
+	SDL_QueryTexture( this->walk[12], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[13] = IMG_LoadTexture(renderer, "./boneco/Dead (14).png");
+	SDL_QueryTexture( this->walk[13], NULL, NULL, &(this->w), &(this->h));
+
+	this->dead[14] = IMG_LoadTexture(renderer, "./boneco/Dead (15).png");
+	SDL_QueryTexture( this->walk[14], NULL, NULL, &(this->w), &(this->h));
+
+	//parado
+	
+	this->idle[0] = IMG_LoadTexture(renderer, "./boneco/Idle (1).png");
+	SDL_QueryTexture( this->walk[0], NULL, NULL, &(this->w),&(this->h));
+
+	this->idle[1] = IMG_LoadTexture(renderer, "./boneco/Idle (2).png");
+	SDL_QueryTexture( this->walk[1], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[2] = IMG_LoadTexture(renderer, "./boneco/Idle (3).png");
+	SDL_QueryTexture( this->walk[2], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[3] = IMG_LoadTexture(renderer, "./boneco/Idle (4).png");
+	SDL_QueryTexture( this->walk[3], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[4] = IMG_LoadTexture(renderer, "./boneco/Idle (5).png");
+	SDL_QueryTexture( this->walk[4], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[5] = IMG_LoadTexture(renderer, "./boneco/Idle (6).png");
+	SDL_QueryTexture( this->walk[5], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[6] = IMG_LoadTexture(renderer, "./boneco/Idle (7).png");
+	SDL_QueryTexture( this->walk[6], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[7] = IMG_LoadTexture(renderer, "./boneco/Idle (8).png");
+	SDL_QueryTexture( this->walk[7], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[8] = IMG_LoadTexture(renderer, "./boneco/Idle (9).png");
+	SDL_QueryTexture( this->walk[8], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[9] = IMG_LoadTexture(renderer, "./boneco/Idle (10).png");
+	SDL_QueryTexture( this->walk[9], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[10] = IMG_LoadTexture(renderer, "./boneco/Idle (11).png");
+	SDL_QueryTexture( this->walk[10], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[11] = IMG_LoadTexture(renderer, "./boneco/Idle (12).png");
+	SDL_QueryTexture( this->walk[11], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[12] = IMG_LoadTexture(renderer, "./boneco/Idle (13).png");
+	SDL_QueryTexture( this->walk[12], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[13] = IMG_LoadTexture(renderer, "./boneco/Idle (14).png");
+	SDL_QueryTexture( this->walk[13], NULL, NULL, &(this->w), &(this->h));
+
+	this->idle[14] = IMG_LoadTexture(renderer, "./boneco/Idle (15).png");
+	SDL_QueryTexture( this->walk[14], NULL, NULL, &(this->w), &(this->h));
+
+
+	//jump
+	
+	this->jump[0] = IMG_LoadTexture(renderer, "./boneco/Jump (1).png");
+	SDL_QueryTexture( this->walk[0], NULL, NULL, &(this->w),&(this->h));
+
+	this->jump[1] = IMG_LoadTexture(renderer, "./boneco/Jump (2).png");
+	SDL_QueryTexture( this->walk[1], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[2] = IMG_LoadTexture(renderer, "./boneco/Jump (3).png");
+	SDL_QueryTexture( this->walk[2], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[3] = IMG_LoadTexture(renderer, "./boneco/Jump (4).png");
+	SDL_QueryTexture( this->walk[3], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[4] = IMG_LoadTexture(renderer, "./boneco/Jump (5).png");
+	SDL_QueryTexture( this->walk[4], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[5] = IMG_LoadTexture(renderer, "./boneco/Jump (6).png");
+	SDL_QueryTexture( this->walk[5], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[6] = IMG_LoadTexture(renderer, "./boneco/Jump (7).png");
+	SDL_QueryTexture( this->walk[6], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[7] = IMG_LoadTexture(renderer, "./boneco/Jump (8).png");
+	SDL_QueryTexture( this->walk[7], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[8] = IMG_LoadTexture(renderer, "./boneco/Jump (9).png");
+	SDL_QueryTexture( this->walk[8], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[9] = IMG_LoadTexture(renderer, "./boneco/Jump (10).png");
+	SDL_QueryTexture( this->walk[9], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[10] = IMG_LoadTexture(renderer, "./boneco/Jump (11).png");
+	SDL_QueryTexture( this->walk[10], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[11] = IMG_LoadTexture(renderer, "./boneco/Jump (12).png");
+	SDL_QueryTexture( this->walk[11], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[12] = IMG_LoadTexture(renderer, "./boneco/Jump (13).png");
+	SDL_QueryTexture( this->walk[12], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[13] = IMG_LoadTexture(renderer, "./boneco/Jump (14).png");
+	SDL_QueryTexture( this->walk[13], NULL, NULL, &(this->w), &(this->h));
+
+	this->jump[14] = IMG_LoadTexture(renderer, "./boneco/Jump (15).png");
+	SDL_QueryTexture( this->walk[14], NULL, NULL, &(this->w), &(this->h));
 }
 
 
