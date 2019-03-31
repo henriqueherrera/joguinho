@@ -246,4 +246,60 @@ void sprite::loadWalk( SDL_Renderer *renderer)
 	SDL_QueryTexture( this->walk[14], NULL, NULL, &(this->w), &(this->h));
 }
 
+void sprite::loadGround( SDL_Renderer *renderer)
+{
+	this->ground[0] = IMG_LoadTexture(renderer, "./ground/1.png");
+	SDL_QueryTexture( this->ground[0], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[1] = IMG_LoadTexture(renderer, "./ground/2.png");
+	SDL_QueryTexture( this->ground[1], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[2] = IMG_LoadTexture(renderer, "./ground/3.png");
+	SDL_QueryTexture( this->ground[2], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[3] = IMG_LoadTexture(renderer, "./ground/4.png");
+	SDL_QueryTexture( this->ground[3], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[4] = IMG_LoadTexture(renderer, "./ground/5.png");
+	SDL_QueryTexture( this->ground[4], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[5] = IMG_LoadTexture(renderer, "./ground/6.png");
+	SDL_QueryTexture( this->ground[5], NULL, NULL, &(this->w),&(this->h));
+	
+	this->ground[6] = IMG_LoadTexture(renderer, "./ground/7.png");
+	SDL_QueryTexture( this->ground[6], NULL, NULL, &(this->w),&(this->h));
+	
+	this->ground[7] = IMG_LoadTexture(renderer, "./ground/8.png");
+	SDL_QueryTexture( this->ground[7], NULL, NULL, &(this->w),&(this->h));
+	
+	this->ground[8] = IMG_LoadTexture(renderer, "./ground/9.png");
+	SDL_QueryTexture( this->ground[8], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[9] = IMG_LoadTexture(renderer, "./ground/10.png");
+	SDL_QueryTexture( this->ground[9], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[10] = IMG_LoadTexture(renderer, "./ground/11.png");
+	SDL_QueryTexture( this->ground[10], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[11] = IMG_LoadTexture(renderer, "./ground/12.png");
+	SDL_QueryTexture( this->ground[11], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[12] = IMG_LoadTexture(renderer, "./ground/13.png");
+	SDL_QueryTexture( this->ground[12], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[13] = IMG_LoadTexture(renderer, "./ground/14.png");
+	SDL_QueryTexture( this->ground[13], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[14] = IMG_LoadTexture(renderer, "./ground/15.png");
+	SDL_QueryTexture( this->ground[14], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[15] = IMG_LoadTexture(renderer, "./ground/16.png");
+	SDL_QueryTexture( this->ground[15], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[16] = IMG_LoadTexture(renderer, "./ground/17.png");
+	SDL_QueryTexture( this->ground[16], NULL, NULL, &(this->w),&(this->h));
+
+	this->ground[17] = IMG_LoadTexture(renderer, "./ground/18.png");
+	SDL_QueryTexture( this->ground[17], NULL, NULL, &(this->w),&(this->h));
+}
 
