@@ -23,7 +23,13 @@ int count = 0,count_mov_personagem = -1, count_mov_cenario = -1 ;
 int coordenada_y[18] = {500,500,500,600,600,600,500,600,600,600,500,300,300,300,
 	300,300,500,600};
 
-bool cima = false, baixo = false, esquerda = false, direita = false, create_run = false;
+double gravidade = 8.80665;
+double F;
+double m = 300;
+double M = 30;
+double r;
+
+bool cima = false, pulo  = false, esquerda = false, direita = false, create_run = false;
 bool close = false;
 
 char WINDOW_NAME[32] = "JOGO";
@@ -40,6 +46,8 @@ void delay( void )
                	{
                      	count_mov_personagem = 0;
               	}
+        	walk.rect.y +=5; 
+
         }
 }
 void delay_background(void)
@@ -67,7 +75,7 @@ void delay_background(void)
 void set_movimentacao( void )
 {
 	walk.loadWalk(renderer);
-        walk.y = 300;
+        walk.y = 365 ;
 	walk.x = 300; 
 	walk.rect.w = 150;
 	walk.rect.h = 150;
@@ -172,8 +180,8 @@ void comportamento(void)
                                 case SDLK_a:
                                         esquerda = true;
                                         break;
-                                case SDLK_s:
-                                        baixo = true;
+                                case SDLK_SPACE:
+                                        pulo = true;
                                         break;
                                 case SDLK_d:
 
@@ -194,8 +202,8 @@ void comportamento(void)
                                 case SDLK_a:
                                         esquerda = false;
                                         break;
-                                case SDLK_s:
-                                        baixo = false;
+                                case SDLK_SPACE:
+                                        pulo = false;
                                         break;
                                 case SDLK_d:
                                         direita = false;
@@ -209,8 +217,8 @@ void comportamento(void)
                         if(cima){
                                 walk.rect.y -= walk.vel;
                         }
-                        if(baixo){
-                                walk.rect.y += walk.vel;
+                        if(pulo){
+                                walk.rect.y -= 50;
                         }
                         if(esquerda){
                                 walk.rect.x -= walk.vel;
@@ -220,7 +228,6 @@ void comportamento(void)
                                 walk.rect.x += walk.vel;
                         }
 			
-             
 		    
                         mainTimer = SDL_GetTicks();
 	       }
@@ -228,27 +235,35 @@ void comportamento(void)
 	}
 }
 
-void colisoes(void)
+void colisoes(int y)
 {
-	if(walk.rect.x <= 0)
+	if(walk.rect.y+133 >= y)
 	{
-		walk.rect.x = 0;
+		walk.rect.y = y-133 ;
 	}
 	
 }
 //gera as imagens
 void fase_1(void)
 {
-	
+
 	SDL_RenderCopy(renderer, ground[0].ground[0], NULL, &ground[0].rect);	
 	SDL_RenderCopy(renderer, ground[7].ground[7], NULL, &ground[7].rect);
-	ground[1].rect.x = 100;
-	ground[4].rect.x = 100;
-	SDL_RenderCopy(renderer, ground[1].ground[1], NULL, &ground[1].rect);
-	SDL_RenderCopy(renderer, ground[4].ground[4], NULL, &ground[4].rect);
+	for(int i  = 1; i<20; i++)
+	{
+		ground[1].rect.x = 100*i;
+		ground[4].rect.x = 100*i;
+	
+		SDL_RenderCopy(renderer, ground[1].ground[1], NULL, &ground[1].rect);
+		SDL_RenderCopy(renderer, ground[4].ground[4], NULL, &ground[4].rect);
+	}
+	cout<<"y personagem"<<walk.rect.y<<endl;
+	cout<<ground[1].rect.y<<endl;
 }
 void blit(void)
 {
+	colisoes(ground[1].rect.y);
+	colisoes(ground[4].rect.y);
 	
         SDL_RenderClear(renderer);
 	
@@ -259,7 +274,7 @@ void blit(void)
 	if(direita)
 	{
 		SDL_RenderCopy(renderer, walk.run[count_mov_personagem], NULL, &walk.rect);
-   	// SDL_RenderCopy(renderer, walk.walk[count_mov_personagem], NULL, &walk.rect);
+   	;
 	}
 	else
 	{
@@ -275,9 +290,6 @@ void blit(void)
 void tique()
 {
 	comportamento();
-	colisoes();
-	
-	//blit();
 }
 
 int main(int argc, char *argv[])
@@ -290,7 +302,7 @@ int main(int argc, char *argv[])
 	int mainTimer = SDL_GetTicks(); 
 	while(!close)
         {
-		cout<<ground[0].rect.y<<endl;
+	
 		thread blitt(blit);
  		tique();
 		blitt.join();
@@ -303,3 +315,4 @@ int main(int argc, char *argv[])
 	
         return 0;
 }
+
