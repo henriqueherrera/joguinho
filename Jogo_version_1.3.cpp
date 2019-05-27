@@ -8,7 +8,7 @@
 #include <thread>
 #include <chrono>
 using namespace std;
-
+//https://itch.io/game-assets/free
 SDL_Window *window;
 SDL_Renderer *renderer;
 SDL_Event Event;
@@ -104,9 +104,9 @@ void set_background( void )
 	{
         	if  ( (i == 0) || ( i == 2) )
 		{
-		background[i].texture = IMG_LoadTexture(renderer, "./fundo1.png");
-                SDL_QueryTexture(background[i].texture, NULL, NULL, &background[i].w, &background[i].h);
-                background[i].x = 1260*i;
+			background[i].texture = IMG_LoadTexture(renderer, "./fundo1.png");
+                	SDL_QueryTexture(background[i].texture, NULL, NULL, &background[i].w, &background[i].h);
+                	background[i].x = 1260*i;
 		}
 		if (i == 1)
 		{
@@ -262,7 +262,7 @@ void fase_1(void)
 }
 void blit(void)
 {
-	colisoes(ground[1].rect.y);
+	colisoes(ground[1].rect.y); 
 	colisoes(ground[4].rect.y);
 	
         SDL_RenderClear(renderer);
@@ -280,6 +280,7 @@ void blit(void)
 	{
 		SDL_RenderCopy(renderer, walk.walk[count_mov_personagem], NULL, &walk.rect);
 	}
+
 	fase_1();
 	SDL_RenderPresent(renderer);
 }
